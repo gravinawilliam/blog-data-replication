@@ -1,4 +1,4 @@
-import { CreateUserController } from '@application/controllers/create-user.controller';
+import { CreateUserController } from '@application/controllers/users/create-user.controller';
 import { CreateUserUseCase } from '@application/use-cases/users/create-user.usecase';
 
 import BlogArticleTypeormRepository from '@infra/database/typeorm/repositories/users/blog-article-typeorm.repository';
