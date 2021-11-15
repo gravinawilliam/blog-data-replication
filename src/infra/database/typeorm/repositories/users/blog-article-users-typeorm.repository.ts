@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { ICreateUserInBlogArticleRepository } from '@domain/repositories/blog-article/create-user-in-blog-article.repository';
-import { IFindByIdUserInBlogArticleRepository } from '@domain/repositories/blog-article/find-by-id-user-in-blog-article.repository';
-import { IUpdateUserInBlogArticleRepository } from '@domain/repositories/blog-article/update-user-in-blog-article.repository';
+import { ICreateUserInBlogArticleRepository } from '@domain/repositories/blog-article/user/create-user-in-blog-article.repository';
+import { IFindByIdUserInBlogArticleRepository } from '@domain/repositories/blog-article/user/find-by-id-user-in-blog-article.repository';
+import { IUpdateUserInBlogArticleRepository } from '@domain/repositories/blog-article/user/update-user-in-blog-article.repository';
 
 import { BlogArticleUserModel } from '@models/user/blog-article-user.model';
 
@@ -12,7 +12,7 @@ import { Either, left, right } from '@shared/utils/either';
 
 import { BlogArticleUserEntity } from '../../entities/user/blog-article-user.entity';
 
-export default class BlogArticleTypeormRepository
+export default class BlogArticleUsersTypeormRepository
   implements
     ICreateUserInBlogArticleRepository,
     IFindByIdUserInBlogArticleRepository,
@@ -32,12 +32,11 @@ export default class BlogArticleTypeormRepository
     name,
   }: BlogArticleUserModel): Promise<BlogArticleUserModel> {
     const createdUser = this.ormRepository.create({ id, name });
-
     const created = await this.ormRepository.save(createdUser);
     return created;
   }
 
-  public async findById(
+  public async findByUserId(
     userId: string,
   ): Promise<Either<undefined, BlogArticleUserModel>> {
     const found = await this.ormRepository.findOne({
@@ -47,14 +46,10 @@ export default class BlogArticleTypeormRepository
     return right(found);
   }
 
-  public async update({
-    id,
-    name,
-  }: BlogArticleUserModel): Promise<BlogArticleUserModel> {
-    const updated = await this.ormRepository.save({
-      id,
-      name,
-    });
+  public async update(
+    params: BlogArticleUserModel,
+  ): Promise<BlogArticleUserModel> {
+    const updated = await this.ormRepository.save(params);
     return updated;
   }
 }

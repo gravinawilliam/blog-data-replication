@@ -7,4 +7,13 @@ export class BlogUserUserEntity {
 
   @Column()
   avatar: string;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  deletedAt?: Date;
+
+  @Column()
+  updatedAt: Date;
 }

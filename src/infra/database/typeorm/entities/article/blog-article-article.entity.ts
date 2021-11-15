@@ -1,15 +1,21 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('users')
-export class BlogArticleUserEntity {
+@Entity('articles')
+export class BlogArticleArticleEntity {
   @PrimaryColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  content?: string;
 
   @Column()
-  avatar: string;
+  status?: string;
+
+  @Column()
+  reviewerId?: string;
+
+  @Column()
+  thumbnail?: string;
 
   @Column()
   createdAt: Date;

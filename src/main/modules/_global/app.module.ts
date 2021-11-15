@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import typeormConfig from '@main/config/typeorm.config';
 
-import { UsersModule } from '../users/users.module';
+import { DataReplicationsModule } from '../data-replications/data-replications.module';
 
 @Module({
   imports: [
@@ -12,7 +12,8 @@ import { UsersModule } from '../users/users.module';
     TypeOrmModule.forRoot(typeormConfig.blogUser),
     TypeOrmModule.forRoot(typeormConfig.blogArticle),
     TypeOrmModule.forRoot(typeormConfig.blogUpload),
-    UsersModule,
+    TypeOrmModule.forRoot(typeormConfig.blogNotification),
+    DataReplicationsModule,
   ],
   controllers: [],
   providers: [],

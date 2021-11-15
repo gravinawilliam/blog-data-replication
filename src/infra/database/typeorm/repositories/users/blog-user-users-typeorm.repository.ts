@@ -11,7 +11,7 @@ import { Either, left, right } from '@shared/utils/either';
 
 import { BlogUserUserEntity } from '../../entities/user/blog-user-user.entity';
 
-export default class BlogUserTypeormRepository
+export default class BlogUserUsersTypeormRepository
   implements IFindByIdUserInBlogUserRepository, IUpdateUserInBlogUserRepository
 {
   private ormRepository: Repository<BlogUserUserEntity>;

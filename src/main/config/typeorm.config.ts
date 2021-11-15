@@ -2,8 +2,13 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import { envConfig } from './env.config';
 
-const { nodeEnv, dataBaseBlogArticle, dataBaseBlogUpload, dataBaseBlogUser } =
-  envConfig;
+const {
+  nodeEnv,
+  dataBaseBlogArticle,
+  dataBaseBlogUpload,
+  dataBaseBlogUser,
+  dataBaseBlogNotification,
+} = envConfig;
 
 const dir = nodeEnv === 'TEST' ? 'src' : 'dist/src';
 const extension = nodeEnv === 'TEST' ? 'ts' : 'js';
@@ -21,6 +26,7 @@ type ITypeormConfig = {
   blogUser: any;
   blogArticle: any;
   blogUpload: any;
+  blogNotification: any;
 };
 
 const typeormConfig: ITypeormConfig = {
@@ -64,6 +70,22 @@ const typeormConfig: ITypeormConfig = {
     username: dataBaseBlogUpload.username,
     password: dataBaseBlogUpload.password,
     database: dataBaseBlogUpload.database,
+    entities: paths.entities,
+    migrations: paths.migrations,
+    synchronize: false,
+    cli: {
+      migrationsDir: paths.migrationsDir,
+    },
+    namingStrategy: new SnakeNamingStrategy(),
+  },
+  blogNotification: {
+    name: 'blog-notification',
+    type: dataBaseBlogNotification.type,
+    host: dataBaseBlogNotification.host,
+    port: dataBaseBlogNotification.port,
+    username: dataBaseBlogNotification.username,
+    password: dataBaseBlogNotification.password,
+    database: dataBaseBlogNotification.database,
     entities: paths.entities,
     migrations: paths.migrations,
     synchronize: false,

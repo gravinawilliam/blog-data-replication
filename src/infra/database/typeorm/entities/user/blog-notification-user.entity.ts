@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
-export class BlogArticleUserEntity {
+export class BlogNotificationUserEntity {
   @PrimaryColumn('uuid')
   id: string;
 
@@ -9,7 +9,7 @@ export class BlogArticleUserEntity {
   name: string;
 
   @Column()
-  avatar: string;
+  email: string;
 
   @Column()
   createdAt: Date;

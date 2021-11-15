@@ -27,4 +27,12 @@ export const envConfig = {
     password: process.env.DB_BLOG_UPLOAD_PASSWORD,
     database: process.env.DB_BLOG_UPLOAD_DATABASE,
   },
+  dataBaseBlogNotification: {
+    type: process.env.DB_BLOG_NOTIFICATION_TYPE,
+    host: process.env.DB_BLOG_NOTIFICATION_HOST,
+    port: parseInt(process.env.DB_BLOG_NOTIFICATION_PORT, 10),
+    username: process.env.DB_BLOG_NOTIFICATION_USERNAME,
+    password: process.env.DB_BLOG_NOTIFICATION_PASSWORD,
+    database: process.env.DB_BLOG_NOTIFICATION_DATABASE,
+  },
 };
