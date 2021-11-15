@@ -21,7 +21,7 @@ export const unauthorized = (error: Error): IHttpResponse => ({
   body: error,
 });
 
-export const ok = (data: unknown): IHttpResponse => ({
+export const ok = (data?: unknown): IHttpResponse => ({
   statusCode: HttpStatusCode.OK,
   body: data,
 });
