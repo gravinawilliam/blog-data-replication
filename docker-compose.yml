@@ -7,11 +7,11 @@ services:
     ports:
       - ${API_PORT}:${API_PORT}
     networks:
-      - kong-net
+      - blog-net
     container_name: blog-data-replication
     volumes:
       - .:/home/node/app
 
 networks:
-  kong-net:
+  blog-net:
     external: true
