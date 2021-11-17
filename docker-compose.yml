@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    entrypoint: ./entrypoint.sh
+    ports:
+      - ${API_PORT}:${API_PORT}
+    networks:
+      - blog-net
+    container_name: blog-data-replication
+    volumes:
+      - .:/home/node/app
+
+networks:
+  blog-net:
+    external: true
