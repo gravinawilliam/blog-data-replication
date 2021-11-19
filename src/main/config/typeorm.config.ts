@@ -10,7 +10,7 @@ const {
   dataBaseBlogNotification,
 } = envConfig;
 
-const dir = nodeEnv === 'TEST' ? 'src' : 'dist/src';
+const dir = nodeEnv === 'PROD' ? 'dist' : 'dist/src';
 const extension = nodeEnv === 'TEST' ? 'ts' : 'js';
 
 const paths = {
