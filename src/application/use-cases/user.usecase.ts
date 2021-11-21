@@ -136,7 +136,7 @@ export class UserUseCase implements IUserUseCase {
         if (avatar != null) user.avatar = avatar;
         if (updatedAt != null) user.updatedAt = updatedAt;
         if (deletedAt != null) user.deletedAt = deletedAt;
-        await this.blogArticleRepository.update(user);
+        await this.blogUserRepository.update(user);
       }
     }
   }
