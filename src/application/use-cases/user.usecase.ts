@@ -89,7 +89,7 @@ export class UserUseCase implements IUserUseCase {
   }
 
   private async update({
-    user: { id, updatedAt, avatar, deletedAt, email, name },
+    user: { id, updatedAt, avatar, deletedAt, email, name, isReviewer },
     producer,
   }: IUpdateUserUseCaseDTO) {
     if (producer !== 'blog-article') {
@@ -133,6 +133,7 @@ export class UserUseCase implements IUserUseCase {
       const userBlogUser = await this.blogUserRepository.findById(id);
       if (userBlogUser.isRight()) {
         const user = userBlogUser.value;
+        if (isReviewer != null) user.isReviewer = isReviewer;
         if (avatar != null) user.avatar = avatar;
         if (updatedAt != null) user.updatedAt = updatedAt;
         if (deletedAt != null) user.deletedAt = deletedAt;

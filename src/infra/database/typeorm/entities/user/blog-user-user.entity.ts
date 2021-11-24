@@ -9,6 +9,9 @@ export class BlogUserUserEntity {
   avatar: string;
 
   @Column()
+  isReviewer: boolean;
+
+  @Column()
   createdAt: Date;
 
   @Column()

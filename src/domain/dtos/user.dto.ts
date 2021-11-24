@@ -3,6 +3,7 @@ export type IUserUseCaseDTO = {
   name?: string;
   avatar?: string;
   email?: string;
+  isReviewer?: boolean;
   deletedAt?: Date;
   updatedAt: Date;
   createdAt: Date;
